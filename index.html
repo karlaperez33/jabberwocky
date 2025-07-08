@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tour A-Frame</title>
+
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene
+      inspector=""
+      keyboard-shortcuts=""
+      screenshot=""
+      vr-mode-ui=""
+      device-orientation-permission-ui=""
+    >
+
+
+      <a-entity
+        camera=""
+        position=""
+        wasd-controls=""
+        rotation=""
+        look-controls=""
+        aframe-injected=""
+      ></a-entity>
+
+      <div class="a-enter-vr" aframe-injected="">
+        <button
+          class="a-enter-vr-button"
+          title="Enter VR mode with a headset or fullscreen mode on a desktop. Visit https://webvr.rocks or https://webvr.info for more information."
+          aframe-injected=""
+        ></button>
+      </div>
+
+      <div class="a-enter-ar a-hidden" aframe-injected="">
+        <button
+          class="a-enter-ar-button"
+          title="Enter AR mode with a headset or handheld device. Visit https://webvr.rocks or https://webvr.info for more information."
+          aframe-injected=""
+        ></button>
+      </div>
+
+      <div class="a-orientation-modal a-hidden" aframe-injected="">
+        <button aframe-injected="">Exit VR</button>
+      </div>
+
+      <a-entity
+        light=""
+        data-aframe-default-light=""
+        aframe-injected=""
+      ></a-entity>
+
+      <a-entity
+        light=""
+        position=""
+        data-aframe-default-light=""
+        aframe-injected=""
+      ></a-entity>
+
+      <a-entity cursor="rayOrigin:mouse"></a-entity>
+
+      <script>
+        AFRAME.registerComponent("weblink", {
+          schema: {
+            url: {
+              default: "",
+            },
+          },
+          init: function () {
+            this.el.addEventListener("click", (e) => {
+              window.location = this.data.url;
+            });
+          },
+        });
+      </script>
+
+      <!-- Change position, text and weblink for each hotspot and photo. !-->
+      <!-- Duplicate a snippet below for additional hotspots, then customize them. -->
+      <!-- -->
+      <!-- BLOCK PLACEMENT -->
+      <!-- X is right positive, left negative  -->
+      <!-- Y is up negative, down negative  -->
+      <!-- Z is toward you positive, away from you negative  -->
+      <!-- -->
+      <!-- BLOCK ROTATION-->
+      <!-- X is tumbles toward or away from you.  -->
+      <!-- Y spins like a top.  -->
+      <!-- Z spins like a fan with blades facing you -->
+      <!-- -->
+      
+<!--    First hotspot    -->
+
+      <a-circle
+        id="next photo"
+        position="14.9883 -2.628 -22.207"
+        rotation="10.0 180 80"
+        width="20"
+        height="20"
+        radius="2"
+        weblink="url: photo2.html"
+      >
+        <a-entity
+          geometry="primitive: circle; radius: 2"
+          material="src: https://cdn.glitch.global/a96b6338-aa4d-45d2-9b5b-43b57027f2df/arrow.png?v=1744148537018; roughness: 1; side: double"
+          position="0.025 -0.073 0.06"
+        ></a-entity>
+      </a-circle>
+      
+<!--    End first hotspot    -->     
+      
+      
+<!--    Second hotspot    -->      
+
+      <a-circle
+      id="intro"
+      position="-12.12824 -6.60754 -19.60389"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="2"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+          geometry="primitive: circle; radius: 2"
+          material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/one.png?v=1744304656155; roughness: 1; side: double"
+          position="0.025 -0.073 0.06"
+        ></a-entity>
+      </a-circle>
+      
+     <div id="infoSlide" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%;">
+        <h2>Introduction </h2>
+        <p style="font-weight: 300;"> Did you know Syracuse University used to be home to one of the most popular music clubs in Central New York? From 1969 to 1985, the basement of the now-demolished Kimmel Dining Hall welcomed some of the greatest musical acts of the time, including Talking Heads, James Taylor, and the Godfather of Soul himself, James Brown. The student-run, alcohol-serving nightclub became a renowned spot for anybody—both students and locals—looking for music and a good time. Nowadays, what was once known as Jabberwocky (or “the Jab”), and eventually became the MakerSpace, is just a mountain of rubble. The building was demolished earlier this year as part of a university effort to build more residence halls and increase student housing on campus. But the Jab lives on! Browse through this 360 image and learn more about the iconic rock ‘n’ roll club that now only lives in the memory (and photographs) of its most loyal regulars. Follow the numbers and look at the pictures, then, click on the arrow for a different perspective of the site. </p>
+        <button onclick="document.getElementById('infoSlide').style.display='none'">Close</button>
+      </div>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const introCircle = document.querySelector('#intro');
+    
+        introCircle.addEventListener('click', () => {
+        document.getElementById('infoSlide').style.display = 'block';
+        });
+        });
+      </script>
+      
+<!-- End second hotspot   -->
+      
+      
+<!-- Third hotspot       -->
+      
+      <a-circle
+      id="howitallstarted"
+      position="-8.970 -5.753 -22.685"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="2"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 2"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/two.png?v=1744304571683; roughness: 1; side: double"
+        position="0 0 0.1">
+        </a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide2" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+        <h2>How It All Started </h2>
+        <p style="font-weight: 300;"> Named after Lewis Carroll’s nonsense poem in the novel “Through the Looking Glass,” Jabberwocky came to be as part of a University Union effort to build a student union building in 1969. Unable to make that goal come true at the time, the university designated the empty, 2,800 square-foot Kimmel Dining Hall basement to UU, and thus, the Jab was born. During its first years of operation, the club served as a “de facto student union,” according to local musician and Jab regular Gary Frenay. </p>
+          <div style="display: flex; align-items: center; gap: 20px;">
+            <!-- Image -->
+            <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/Opening.jpg?v=1744168831271') no-repeat center center; background-size: contain; width: 45%; height: 250px;"></div>
+
+           <!-- Caption -->
+          <div style="width: 45%; font-weight: 300; font-style: italic;">
+          <p>1969 newspaper clipping from The Post-Standard announcing the opening of Jabberwocky. (Special Collections Research Center, Syracuse University Libraries)</p>
+           </div>
+          </div>
+         <button onclick="document.getElementById('infoSlide2').style.display='none'">Close</button>
+      </div>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#howitallstarted');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide2').style.display = 'block';
+        });
+        });
+      </script>
+      
+<!-- End third hotspot -->
+     
+      
+<!-- Fourth hotspot       -->
+      
+       <a-circle
+      id="jabprogramming"
+      position="-7.041 -5.434 -30.898"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="2"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 2"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/three.png?v=1744209381399; roughness: 1; side: double;"
+        position="0 0 0.1"
+        ></a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide3" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+        <h2>Jab Programming </h2>
+        <p style="font-weight: 300;"> The on-campus club not only served alcohol but also had a complete food menu, serving fast food staples like burgers, sandwiches, fries, and popcorn. The Jab was never a dull place as it offered different programming throughout the week, including open mic nights, trivia contests, boogie (disco) nights, and—what it is most known for—live band shows. </p>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/6-jab-ad2.jpg?v=1744208249625') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>An advertisement promoting the Jab's weekly programming. (Provided by Gary Frenay)</p>
+          </div>
+          </div>
+         <button onclick="document.getElementById('infoSlide3').style.display='none'">Close</button>
+      </div>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#jabprogramming');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide3').style.display = 'block';
+        });
+        });
+      </script>
+      
+<!-- End fourth hotspot -->    
+      
+      
+<!-- Fifth hotspot       --> 
+      
+       <a-circle
+      id="floorplan"
+      position="-6.616 -9.157 -21.775"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="1"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 1"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/multimedia?v=1744210192041; roughness: 1; side: double"
+        position="0 0 0.1">
+        </a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide4" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+        <h2>What Did the Jab Look Like? </h2>
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/Jab%20floor%20map.jpeg?v=1744210024883') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>A layout of the Jabberwocky club drawn by musician and regular, Gary Frenay.</p>
+          </div>
+          </div>
+
+         <button onclick="document.getElementById('infoSlide4').style.display='none'">Close</button>
+      </div>
+         <button onclick="document.getElementById('infoSlide4').style.display='none'">Close</button>
+     
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#floorplan');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide4').style.display = 'block';
+        });
+        });
+      </script>
+      
+<!-- End fifth hotspot -->    
+    
+      
+<!-- Sixth hotspot       -->   
+      
+      <a-circle
+      id="poster1"
+      position="-9.771 -10.863 -21.809"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="1"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 1"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/multimedia?v=1744210192041; roughness: 1; side: double"
+        position="0 0 0.1">
+        </a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide5" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">      
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/Poster1.jpg?v=1744172099448') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>Hand-drawn poster advertising the opening of Jabberwocky on May 8, 1969. (Special Collections Research Center, Syracuse University Libraries)</p>
+          </div>
+          </div>
+
+         <button onclick="document.getElementById('infoSlide5').style.display='none'">Close</button>
+      </div>
+         <button onclick="document.getElementById('infoSlide5').style.display='none'">Close</button>
+     
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#poster1');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide5').style.display = 'block';
+        });
+        });
+      </script>
+      
+<!-- End sixth hotspot -->      
+
+      
+<!-- Seventh hotspot       -->   
+      
+       <a-circle
+      id="thejabatitspeak"
+      position="-3.415 -3.805 -33.057"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="2"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 2"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/four.png?v=1744221564207; roughness: 1; side: double;"
+        position="0 0 0.1"
+        ></a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide6" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+        <h2>The Jab at Its Peak </h2>
+        <p style="font-weight: 300;"> From 1969-1985, the Jabberwocky club became a beacon for small artists in Central New York. According to Founding Director of the Bandier Program, David Rezak, the music industry became aware of the "launch pad" potential of a small university venue in Upstate New York. Its proximity to New York City and its coverage in local media like WAER radio and the Syracuse New Times meant record labels could send their new artists and test them out with a small yet prominent crowd. Among these "new" artists were acts that would later go on to become superstars like Talking Heads, James Taylor, Bonnie Raitt, Taj Mahal, and Cindy Lauper. "I mean, [it was] just a litany of incredible artists coming to Syracuse," Rezak said. </p>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/Dress%20Code%40Jab%201.jpg?v=1744221193426') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>Rock 'n' roll band Dress Code playing at the Jab ca.1980s (Photo provided by Gary Frenay)</p>
+          </div>
+          </div>
+         <button onclick="document.getElementById('infoSlide6').style.display='none'">Close</button>
+      </div>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#thejabatitspeak');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide6').style.display = 'block';
+        });
+        });
+      </script>   
+      
+<!-- End seventh hotspot -->         
+   
+ 
+<!-- Eighth hotspot -->   
+      
+       <a-circle
+      id="albatross"
+      position="-3.739 -7.360 -21.809"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="1"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 1"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/multimedia?v=1744210192041; roughness: 1; side: double"
+        position="0 0 0.1">
+        </a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide7" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/albatross.jpg?v=1744224163353') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>Albatross, a hard rock band from Milwaukee, performing at the Jabberwocky in 1973. (Photo provided by Gary Frenay)</p>
+          </div>
+          </div>
+
+         <button onclick="document.getElementById('infoSlide7').style.display='none'">Close</button>
+      </div>
+         <button onclick="document.getElementById('infoSlide7').style.display='none'">Close</button>
+     
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#albatross');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide7').style.display = 'block';
+        });
+        });
+      </script>
+      
+<!-- End eighth hotspot -->     
+      
+ 
+<!-- Ninth hotspot -->  
+      
+       <a-circle
+      id="sforbrains"
+      position="-1.649 -5.752 -23.176"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="1"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 1"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/multimedia?v=1744210192041; roughness: 1; side: double"
+        position="0 0 0.1">
+        </a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide8" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/Shit%20For%20Brains%20at%20Jab%202.jpg?v=1744224900913') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>Metal band Shit for Brains performing at the Jab in 1982. (Photo provided by Gary Frenay)</p>
+          </div>
+          </div>
+
+         <button onclick="document.getElementById('infoSlide8').style.display='none'">Close</button>
+      </div>
+         <button onclick="document.getElementById('infoSlide8').style.display='none'">Close</button>
+     
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#sforbrains');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide8').style.display = 'block';
+        });
+        });
+      </script>
+ 
+<!-- End ninth hotspot -->           
+
+      
+<!-- Tenth hotspot -->  
+      
+       <a-circle
+      id="poster2"
+      position="2.218 -3.943 -30.527"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="1"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 1"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/multimedia?v=1744210192041; roughness: 1; side: double"
+        position="0 0 0.1">
+        </a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide9" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/Poster2.jpg?v=1744225908028') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>Promotional poster advertising Southside Johnny and The Asbury Jukes concert at Jabberwocky on October 20, 1976. (Special Collections Research Center, Syracuse University Libraries)</p>
+          </div>
+          </div>
+
+         <button onclick="document.getElementById('infoSlide9').style.display='none'">Close</button>
+      </div>
+         <button onclick="document.getElementById('infoSlide9').style.display='none'">Close</button>
+     
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#poster2');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide9').style.display = 'block';
+        });
+        });
+      </script>
+
+<!-- End tenth hotspot --> 
+      
+      
+<!-- Eleventh hotspot -->
+     
+        <a-circle
+      id="crosscreek"
+      position="4.878 -3.747 -29.531"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="1"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 1"
+         material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/multimedia?v=1744210192041; roughness: 1; side: double"
+        position="0 0 0.1">
+        </a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide10" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/Cross%20Creek%20at%20Jab%201.JPG?v=1744226477487') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>Country-rock band Cross Creek performing at the Jab in 1974. Hear this performance <a href="https://archive.org/details/CrossCreekBandLiveAtTheJabberwocky/HelloTrouble.mp3">here</a>. (Photo provided by Gary Frenay)</p>
+          </div>
+          </div>
+
+         <button onclick="document.getElementById('infoSlide10').style.display='none'">Close</button>
+      </div>
+         <button onclick="document.getElementById('infoSlide10').style.display='none'">Close</button>
+     
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#crosscreek');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide10').style.display = 'block';
+        });
+        });
+      </script>
+      
+<!-- End eleventh hotspot -->      
+ 
+
+<!-- Twelfth hotspot -->    
+      
+    <a-circle
+      id="poster3"
+      position="7.697 -4.013 -30.469"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="1"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 1"
+         material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/multimedia?v=1744210192041; roughness: 1; side: double"
+        position="0 0 0.1">
+        </a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide11" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/Poster3.jpg?v=1744227059884') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>Promotional poster advertising Martin Mull concert at Jabberwocky on April 24 and 25, 1974. (Special Collections Research Center, Syracuse University Libraries)</p>
+          </div>
+          </div>
+
+         <button onclick="document.getElementById('infoSlide11').style.display='none'">Close</button>
+      </div>
+         <button onclick="document.getElementById('infoSlide11').style.display='none'">Close</button>
+     
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#poster3');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide11').style.display = 'block';
+        });
+        });
+      </script>   
+      
+<!-- End twelfth hotspot -->         
+      
+<!-- Change 360 photo to your own below. -->
+      <a-sky
+        src="https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/IMG_20250407_170433_231.JPG?v=1744164149149"
+        rotation="0 70 0"
+      ></a-sky>
+      
+<!-- End 360 photo -->
+      
+    </a-scene>
+  </body>
+</html>
