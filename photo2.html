@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tour A-Frame</title>
+
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene
+      inspector=""
+      keyboard-shortcuts=""
+      screenshot=""
+      vr-mode-ui=""
+      device-orientation-permission-ui=""
+    >
+
+
+      <a-entity
+        camera=""
+        position=""
+        wasd-controls=""
+        rotation=""
+        look-controls=""
+        aframe-injected=""
+      ></a-entity>
+
+      <div class="a-enter-vr" aframe-injected="">
+        <button
+          class="a-enter-vr-button"
+          title="Enter VR mode with a headset or fullscreen mode on a desktop. Visit https://webvr.rocks or https://webvr.info for more information."
+          aframe-injected=""
+        ></button>
+      </div>
+
+      <div class="a-enter-ar a-hidden" aframe-injected="">
+        <button
+          class="a-enter-ar-button"
+          title="Enter AR mode with a headset or handheld device. Visit https://webvr.rocks or https://webvr.info for more information."
+          aframe-injected=""
+        ></button>
+      </div>
+
+      <div class="a-orientation-modal a-hidden" aframe-injected="">
+        <button aframe-injected="">Exit VR</button>
+      </div>
+
+      <a-entity
+        light=""
+        data-aframe-default-light=""
+        aframe-injected=""
+      ></a-entity>
+
+      <a-entity
+        light=""
+        position=""
+        data-aframe-default-light=""
+        aframe-injected=""
+      ></a-entity>
+
+      <a-entity cursor="rayOrigin:mouse"></a-entity>
+
+      <script>
+        AFRAME.registerComponent("weblink", {
+          schema: {
+            url: {
+              default: "",
+            },
+          },
+          init: function () {
+            this.el.addEventListener("click", (e) => {
+              window.location = this.data.url;
+            });
+          },
+        });
+      </script>
+
+      <!-- Change position, text and weblink for each hotspot and photo. !-->
+      <!-- Duplicate a snippet below for additional hotspots, then customize them. -->
+      <!-- -->
+      <!-- BLOCK PLACEMENT -->
+      <!-- X is right positive, left negative  -->
+      <!-- Y is up negative, down negative  -->
+      <!-- Z is toward you positive, away from you negative  -->
+      <!-- -->
+      <!-- BLOCK ROTATION-->
+      <!-- X is tumbles toward or away from you.  -->
+      <!-- Y spins like a top.  -->
+      <!-- Z spins like a fan with blades facing you -->
+      <!-- -->
+      
+<!--    First hotspot    -->
+
+      <a-circle
+        id="forward"
+        position="-5.261 -3.364 -30.461"
+        rotation="0 180 -50"
+        width="20"
+        height="20"
+        radius="2"
+        weblink="url: index.html"
+      >
+        <a-entity
+          geometry="primitive: circle; radius: 2"
+          material="src: https://cdn.glitch.global/a96b6338-aa4d-45d2-9b5b-43b57027f2df/arrow.png?v=1744148537018; roughness: 1; side: double"
+          position="0.025 -0.073 0.06"
+        ></a-entity>
+      </a-circle>
+      
+<!--    End first hotspot    -->     
+      
+      
+<!--    Second hotspot    -->      
+
+       <a-circle
+      id="alice"
+      position="18.309 -6.142 -21.710"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="2"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 2"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/five?v=1744304217293; roughness: 1; side: double;"
+        position="0 0 0.1"
+        ></a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide12" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+        <h2>Alice on the Jab Walls </h2>
+        <p style="font-weight: 300;"> Mitchel Resnick, who graduated from SU in 1976, painted the Jabberwocky murals on the club's sound-proof tectum walls. The murals portray scenes from Lewis Carroll's "Alice in Wonderland" and provided a backdrop for the second stage location from 1979 to 1985. After the demolition of Kimmel Dining Hall, some of the mural panels were moved to the Newhouse School and WAER radio station, while others remain in storage. </p>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/Cubes%20at%20Jab%2C%20Nov%201979.jpeg?v=1744304288155') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>Gary Frenay's band the Flashcubes performing in front of the "Alice in Wonderland" murals in 1979. (Photo provided by Gary Frenay)</p>
+          </div>
+          </div>
+         <button onclick="document.getElementById('infoSlide12').style.display='none'">Close</button>
+      </div>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#alice');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide12').style.display = 'block';
+        });
+        });
+      </script>
+
+<!-- End second hotspot   -->
+    
+      
+<!-- Third hotspot       -->
+      
+         <a-circle
+      id="alice2"
+      position="18.009 -9.333 -25.191"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="1"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 1"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/multimedia?v=1744210192041; roughness: 1; side: double"
+        position="0 0 0.1">
+        </a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide13" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/Fans%40Jab.jpeg?v=1744304782497') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>Fans socializing at the Jab in front of the iconic "Alice in Wonderland" murals by artist Mitchel Resnick. (Photo provided by Gary Frenay)</p>
+          </div>
+          </div>
+
+         <button onclick="document.getElementById('infoSlide13').style.display='none'">Close</button>
+      </div>
+         <button onclick="document.getElementById('infoSlide13').style.display='none'">Close</button>
+     
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#alice2');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide13').style.display = 'block';
+        });
+        });
+      </script>
+
+<!-- End third hotspot -->
+      
+      
+<!-- Fourth hotspot       -->    
+      
+       <a-circle
+      id="playing"
+      position="13.109 -6.233 -26.185"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="2"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 2"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/six.png?v=1744306221384; roughness: 1; side: double;"
+        position="0 0 0.1"
+        ></a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide14" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+        <h2>Playing the Jab</h2>
+   	 <p style="font-weight: 300;">
+The Jab was also a spot for local musicians to develop a following. Gary 	Frenay is a Syracuse-based singer-songwriter who founded two bands that regularly played at the Jab—the Flashcubes (1977) and Screen Test (1980). According to Frenay, the club's student-based crowd helped launch his punk, new wave band, the Flashcubes, since students were more familiar—than the general demographic in Syracuse—with the developing NYC scene, which included artists like Patti Smith and Blondie. Frenay described the Jab's atmosphere as always dark, with a lingering smell of beer. Still, the small-sized club created an intimate setting where the artists had to walk through the crowd to get to the dressing rooms, meaning audience members could directly interact with their favorite musicians. 
+</p>
+
+<p style="font-weight: 300;">
+  "It was a very cool thing; we played gigs, and they'd be jumping around like crazy, jumping on the stage at the end of the gig. That was how the band happened, really, it was because of Jab," Frenay said. </p>
+
+<button onclick="document.getElementById('infoSlide14').style.display='none'">Close</button>
+      </div>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#playing');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide14').style.display = 'block';
+        });
+        });
+      </script>
+      
+<!-- End fourth hotspot --> 
+    
+      
+<!-- Fifth hotspot       -->       
+      
+        <a-circle
+      id="fc"
+      position="11.039 -9.101 -28.308"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="1"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 1"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/multimedia?v=1744210192041; roughness: 1; side: double"
+        position="0 0 0.1">
+        </a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide15" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/FC%202.0%40Jab.jpeg?v=1744306250567') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>Gary Frenay’s band the Flashcubes performing at Jabberwocky in 1979. (Photo provided by Gary Frenay)</p>
+          </div>
+          </div>
+
+         <button onclick="document.getElementById('infoSlide15').style.display='none'">Close</button>
+      </div>
+         <button onclick="document.getElementById('infoSlide15').style.display='none'">Close</button>
+     
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#fc');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide15').style.display = 'block';
+        });
+        });
+      </script>
+
+<!-- End fifth hotspot -->     
+      
+      
+<!-- Sixth hotspot       -->   
+    
+      <a-circle
+  id="screentest"
+  position="12.339 -9.469 -26.215"
+  rotation="360 0"
+  radius="1"
+  class="clickable">
+ 
+        <a-entity
+    geometry="primitive: circle; radius: 1"
+    material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/multimedia?v=1744210192041; roughness: 1; side: double"
+    position="0 0 0.1"
+      ></a-entity>
+    </a-circle>
+
+<div
+  id="infoSlide16"
+  style="
+    display: none;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    max-width: 600px;
+    width: 80%;
+    z-index: 1000;">
+ 
+
+  <!-- two‐up images -->
+      <div style="display: flex; gap: 10px; margin: 20px 0;">
+    <!-- First Image -->
+      <div
+      style="
+        flex: 1;
+        background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/Screen%20Test%20at%20Jab.jpg?v=1744313904534')
+          no-repeat center center;
+        background-size: contain;
+        height: 250px; "></div>
+
+    <!-- Second Image -->
+      <div
+        style="
+        flex: 1;
+        background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/ST%20GF%40Jab%201981.jpeg?v=1744314413933')
+          no-repeat center center;
+        background-size: contain;
+        height: 250px;"
+      ></div>
+  </div>
+
+  <!-- shared caption -->
+  <div
+    style="
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 20px;
+    ">
+    
+    <p>
+      Screen Test, a Syracuse rock trio founded by Gary Frenay, performing at Jabberwocky in 1981. Close-up of Frenay playing the bass on the right. (Photos provided by Gary Frenay)
+    </p>
+  </div>
+
+  <button onclick="document.getElementById('infoSlide16').style.display='none'">
+    Close
+  </button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document
+      .querySelector('#screentest')
+      .addEventListener('click', () => {
+        document.getElementById('infoSlide16').style.display = 'block';
+      });
+  });
+</script>
+      
+<!-- End sixth hotspot -->  
+      
+      
+<!-- Seventh hotspot       --> 
+      
+      <a-circle
+      id="hurrah"
+      position="8.403 -6.729 -34.243"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="2"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 2"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/seven.png?v=1744316264926; roughness: 1; side: double;"
+        position="0 0 0.1"
+        ></a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide17" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+        <h2>The Last Hurrah</h2>
+   	 <p style="font-weight: 300;">
+In 1984, a college student's worst nightmare became a reality—the drinking age in the U.S. was raised from 18 to 21. According to Rezak and Frenay, the National Minimum Drinking Age Act signified the Jab's death as three-fourths of the student population were now not allowed to drink on campus—thus, live music at SU moved underground. </p>
+
+<p style="font-weight: 300;">
+  But, the iconic club would not go easily. In 1985, using money from Miller Beer sponsorships, organizers booked a week's worth of funeral festivities to close out Jabberwocky, starting off with blues artists John Hammond and Junior Wells. The rest of the week featured Roger McGuinn from the Byrds, Jorma Kaukonen, John Cale from the Velvet Underground, and "The Hardest Working Man in Show Business" James Brown. Surprisingly, Brown played Thursday night instead of the closing night on Friday, but his show was sold out with standing room only. With Brown's signature splits and capes up on that tiny stage, the Jab got its last hurrah.  </p>
+
+<button onclick="document.getElementById('infoSlide17').style.display='none'">Close</button>
+      </div>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#hurrah');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide17').style.display = 'block';
+        });
+        });
+      </script>
+      
+<!-- End seventh hotspot -->  
+      
+      
+<!-- Eighth hotspot       -->  
+      
+       <a-circle
+      id="clipping"
+      position="5.086 -7.808 -31.875"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="1"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 1"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/multimedia?v=1744210192041; roughness: 1; side: double"
+        position="0 0 0.1">
+        </a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide18" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/Closing.jpg?v=1744316944329') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>1985 newspaper clipping from The Post-Standard announcing the closing of Jabberwocky. (Special Collections Research Center, Syracuse University Libraries)</p>
+          </div>
+          </div>
+
+         <button onclick="document.getElementById('infoSlide18').style.display='none'">Close</button>
+      </div>
+         <button onclick="document.getElementById('infoSlide18').style.display='none'">Close</button>
+     
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#clipping');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide18').style.display = 'block';
+        });
+        });
+      </script>
+      
+<!-- End eighth hotspot --> 
+      
+      
+<!-- Ninth hotspot       --> 
+      
+    <a-circle
+      id="john"
+      position="6.429 -8.670 -29.328"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="1"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 1"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/multimedia?v=1744210192041; roughness: 1; side: double"
+        position="0 0 0.1">
+        </a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide19" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <!-- Image -->
+          <div style="background: url('https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/John%20Cale%20at%20Jab.jpg?v=1744317353337') no-repeat center center; background-size: contain; width: 100%; height: 250px;"></div>
+
+    <!-- Caption -->
+          <div style="width: 100%; text-align: center; font-weight: 300; font-style: italic;">
+             <p>John Cale from the Velvet Underground performing at the Jab's last living night in 1985. (Photo provided by Gary Frenay)</p>
+          </div>
+          </div>
+
+         <button onclick="document.getElementById('infoSlide19').style.display='none'">Close</button>
+      </div>
+         <button onclick="document.getElementById('infoSlide19').style.display='none'">Close</button>
+     
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#john');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide19').style.display = 'block';
+        });
+        }); 
+      </script>   
+        
+<!-- End nith hotspot -->     
+      
+      
+<!-- Tenth hotspot       --> 
+      
+    <a-circle
+      id="last"
+      position="1.758 -5.051 -35.732"
+      rotation="360 0"
+      width="20"
+      height="20"
+      radius="2"
+      material=""
+      geometry=""
+      class="clickable">
+
+        <a-entity
+        geometry="primitive: circle; radius: 2"
+        material="src: https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/eight?v=1744318006802; roughness: 1; side: double;"
+        position="0 0 0.1"
+        ></a-entity>
+
+      </a-circle>
+      
+       <div id="infoSlide20" style="display: none; position: absolute; top: 10%; left: 10%; background: white; padding: 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-weight: 300; max-width: 600px; width: 80%; z-index: 1000;">
+        <h2>A Forgotten Piece of Campus History</h2>
+   	 <p style="font-weight: 300;">More than 55 years after its debut, Jabberwocky is no more than a memory—and rubble. As students walk by the Kimmel Hall demolition site, nothing lingers but the inevitable sense of oblivion. This project aims to use an emerging media technology to immortalize a forgotten piece of campus history. A special thanks to Gary Frenay for sharing his story and archival photos! Please take <a href="https://forms.gle/znA8oAmBZcxAUTKc9">this survey</a> to provide feedback on your experience. </p>
+
+<button onclick="document.getElementById('infoSlide20').style.display='none'">Close</button>
+      </div>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const secondCircle = document.querySelector('#last');
+    
+        secondCircle.addEventListener('click', () => {
+        console.log("Image section clicked");
+        document.getElementById('infoSlide20').style.display = 'block';
+        });
+        });
+      </script>
+  
+<!-- End tenth hotspot -->         
+      
+<!-- Change 360 photo to your own below. -->
+      <a-sky
+        src="https://cdn.glitch.global/e510d374-520a-427d-b633-7cea819cde23/IMG_20250407_170543_496.JPG?v=1744164236247"
+        rotation="0 70 0"
+      ></a-sky>
+      
+<!-- End 360 photo -->
+      
+    </a-scene>
+  </body>
+</html>
